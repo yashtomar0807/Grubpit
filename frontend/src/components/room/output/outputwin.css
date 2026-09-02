@@ -1,0 +1,93 @@
+.output-container {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  background: #090d16;
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.output-topbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 38px;
+  padding: 0 14px;
+  background: #111726;
+  border-bottom: 1px solid var(--border-subtle);
+}
+
+.output-title {
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--text-main);
+}
+
+.topbar-right {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.clear-btn {
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid var(--border-subtle);
+  color: var(--text-muted);
+  font-size: 11px;
+  padding: 3px 8px;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.clear-btn:hover {
+  background: rgba(255, 255, 255, 0.1);
+  color: var(--text-main);
+}
+
+.run-code-btn {
+  background: var(--gradient-primary);
+  border: none;
+  color: white;
+  font-size: 11px;
+  font-weight: 700;
+  padding: 4px 12px;
+  border-radius: 4px;
+  cursor: pointer;
+  box-shadow: 0 2px 8px rgba(99, 102, 241, 0.3);
+}
+
+.run-code-btn:hover:not(:disabled) {
+  opacity: 0.95;
+  box-shadow: 0 4px 12px rgba(99, 102, 241, 0.5);
+}
+
+.console-logs {
+  flex: 1;
+  padding: 12px;
+  font-family: var(--font-mono);
+  font-size: 12px;
+  line-height: 1.5;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.no-logs {
+  color: var(--text-dim);
+  font-style: italic;
+}
+
+.log-line {
+  display: flex;
+  gap: 8px;
+}
+
+.log-prefix {
+  color: var(--text-dim);
+}
+
+.log-line.info { color: var(--accent-cyan); }
+.log-line.success { color: var(--accent-emerald); }
+.log-line.out { color: var(--text-muted); }
+.log-line.error { color: var(--accent-rose); }

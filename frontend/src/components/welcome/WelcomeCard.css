@@ -1,8 +1,109 @@
-.welcome-card{
-align-self:flex-start;
+.welcome-card {
+  width: 100%;
+  padding: 32px;
+  background: linear-gradient(135deg, rgba(99, 102, 241, 0.12) 0%, rgba(139, 92, 246, 0.08) 50%, rgba(18, 23, 34, 0.9) 100%);
+  border: 1px solid var(--border-glow);
+  border-radius: 16px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 24px;
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.25);
+  position: relative;
+  overflow: hidden;
+}
 
-width: 461px;
-height:50px;
+.welcome-card::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -20%;
+  width: 300px;
+  height: 300px;
+  background: radial-gradient(circle, rgba(99, 102, 241, 0.25) 0%, rgba(0,0,0,0) 70%);
+  pointer-events: none;
+}
 
+.welcome-content {
+  max-width: 620px;
+  z-index: 1;
+}
 
+.welcome-badge {
+  display: inline-block;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  color: var(--accent-indigo);
+  background: rgba(99, 102, 241, 0.15);
+  padding: 4px 10px;
+  border-radius: 20px;
+  border: 1px solid rgba(99, 102, 241, 0.3);
+  margin-bottom: 12px;
+}
+
+.welcome-content h1 {
+  font-size: 32px;
+  font-weight: 800;
+  line-height: 1.25;
+  color: var(--text-main);
+  margin-bottom: 10px;
+  background: linear-gradient(180deg, #ffffff 0%, #cbd5e1 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.welcome-content p {
+  font-size: 14px;
+  line-height: 1.6;
+  color: var(--text-muted);
+}
+
+.welcome-stats {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  z-index: 1;
+  min-width: 220px;
+}
+
+.stat-pill {
+  background: rgba(18, 23, 34, 0.7);
+  border: 1px solid var(--border-subtle);
+  padding: 10px 16px;
+  border-radius: 10px;
+  backdrop-filter: blur(8px);
+  display: flex;
+  flex-direction: column;
+  transition: all 0.2s ease;
+}
+
+.stat-pill:hover {
+  border-color: rgba(99, 102, 241, 0.4);
+  transform: translateX(4px);
+}
+
+.stat-value {
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--accent-cyan);
+}
+
+.stat-label {
+  font-size: 11px;
+  color: var(--text-dim);
+}
+
+@media (max-width: 900px) {
+  .welcome-card {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  .welcome-stats {
+    flex-direction: row;
+    width: 100%;
+  }
+  .stat-pill {
+    flex: 1;
+  }
 }

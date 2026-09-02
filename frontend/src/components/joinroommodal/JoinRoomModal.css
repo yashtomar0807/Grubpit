@@ -1,19 +1,13 @@
-.join-room-modal{
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(51, 75, 107, 0.5);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    z-index: 1000;
+.cyan-icon-bg {
+  background: rgba(6, 182, 212, 0.15) !important;
+  border-color: rgba(6, 182, 212, 0.3) !important;
 }
-.container{
-    background-color: #1e1e1e;
-    padding: 20px;
-    border-radius: 8px;
-    width: 400px;
-    max-width: 90%;
+
+.join-submit-btn {
+  background: var(--gradient-cyan) !important;
+  box-shadow: 0 4px 14px rgba(6, 182, 212, 0.3) !important;
+}
+
+.join-submit-btn:hover {
+  box-shadow: 0 6px 20px rgba(6, 182, 212, 0.5) !important;
 }

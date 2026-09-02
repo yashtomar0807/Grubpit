@@ -1,48 +1,93 @@
 import './JoinRoomModal.css';
 import axios from 'axios';
-import {useState,useEffect} from 'react';
-import { useNavigate } from 'react-router-dom';
-function JoinRoomModal({ isOpen, onClose }) {
-    const [roomCode,setRoomCode]=useState('');
-    const [pass,setpass]=useState('');
-    const navigate=useNavigate();
+import { useState } from 'react';
 
-    if(!isOpen)return null;
+function JoinRoomModal({ isOpen, onClose, onJoin }) {
+  const [roomCode, setRoomCode] = useState('');
+  const [pass, setpass] = useState('');
+  const [error, setError] = useState('');
 
-    const handleJoinRoom = async () => {
-      
+  if (!isOpen) return null;
 
-        try{
-            const response = await axios.post('http://localhost:5000/api/room/join', {
-                roomCode: roomCode,
-                password: pass
-            });
-            const data = await response.data;
-            if(response.status === 200){
-                console.log('Room joined successfully:', data);
-                navigate(`/room/${response.data.room.roomCode}`);
+  const handleJoinRoom = async (e) => {
+    e.preventDefault();
+    setError('');
 
-                onClose();
-            } else {
-                setError(data.message || 'Failed to join room');
-            }
-        }
-        catch(error){
-            console.error('Error joining room:', error);
-            setError('An error occurred while joining the room');
-        }
-
+    if (!roomCode || !pass) {
+      setError('Please enter both room code and password');
+      return;
     }
-    return (<section className="join-room-modal">
-            <h2>Join Room Modal</h2>
-            <div className="container">
-                Room Code: <input type="text" placeholder="Enter room code" value={roomCode} onChange={(e)=>setRoomCode(e.target)}/>
-                Password: <input type="text" placeholder="Enter Password" value={pass} onChange={(e)=>setpass(e.target.value)}/>
-                
-                <button onClick={handleJoinRoom}> Join Room</button>
-                <button onClick={onClose}>Close</button>
 
+    try {
+      const roomData = {
+        roomCode,
+        password: pass
+      };
+
+      if (onJoin) {
+        await onJoin(roomData);
+      } else {
+        const response = await axios.post('http://localhost:5000/api/room/join', roomData);
+        if (response.status === 200) {
+          onClose();
+        }
+      }
+    } catch (err) {
+      console.error('Error joining room:', err);
+      setError(err.response?.data?.message || 'Failed to join room. Please check credentials.');
+    }
+  };
+
+  return (
+    <div className="modal-overlay" onClick={onClose}>
+      <div className="modal-card join-modal-card" onClick={(e) => e.stopPropagation()}>
+        <div className="modal-header">
+          <div className="modal-title">
+            <span className="modal-icon cyan-icon-bg">🔑</span>
+            <div>
+              <h2>Join Room</h2>
+              <p>Enter workspace with room code & password</p>
             </div>
-         </section>);
+          </div>
+          <button className="modal-close-x" onClick={onClose}>✕</button>
+        </div>
+
+        {error && <div className="modal-error-banner">{error}</div>}
+
+        <form onSubmit={handleJoinRoom} className="modal-form">
+          <div className="form-group">
+            <label>Room Code</label>
+            <input 
+              type="text" 
+              placeholder="e.g. A1B2C3" 
+              value={roomCode} 
+              onChange={(e) => setRoomCode(e.target.value.toUpperCase())} 
+              maxLength={10}
+            />
+          </div>
+
+          <div className="form-group">
+            <label>Password</label>
+            <input 
+              type="password" 
+              placeholder="Enter room password" 
+              value={pass} 
+              onChange={(e) => setpass(e.target.value)} 
+            />
+          </div>
+
+          <div className="modal-actions">
+            <button type="button" className="btn-secondary" onClick={onClose}>
+              Cancel
+            </button>
+            <button type="submit" className="btn-primary join-submit-btn">
+              Join Workspace →
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+  );
 }
+
 export default JoinRoomModal;

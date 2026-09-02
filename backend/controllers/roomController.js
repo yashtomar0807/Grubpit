@@ -3,7 +3,6 @@ import generateRoomCode from '../utils/generateRoomCode.js';
 import bcrypt from "bcrypt";
 
 export async function createRoom(req,res){
-
     try{
         const { roomName, password, category, maxParticipants } = req.body;
         let roomCode=generateRoomCode();
@@ -69,6 +68,7 @@ export async function joinRoom(req,res){
         res.status(500).json({message:"Error joining room",error});
     }
 }
+
 export async function getRoom(req,res){
     try{
         const {roomCode}=req.params;
@@ -92,6 +92,33 @@ export async function getRoom(req,res){
         return res.status(500).json({
             success: false,
             message: "Internal server error."
+        });
+    }
+}
+
+export async function deleteRoom(req, res) {
+    try {
+        const { roomCode } = req.params;
+
+        const deletedRoom = await Room.findOneAndDelete({ Roomcode: roomCode });
+
+        if (!deletedRoom) {
+            return res.status(404).json({
+                success: false,
+                message: "Room not found or already deleted"
+            });
+        }
+
+        return res.status(200).json({
+            success: true,
+            message: "Room deleted successfully",
+            roomCode
+        });
+    } catch (error) {
+        console.error("Error in deleteRoom controller:", error);
+        return res.status(500).json({
+            success: false,
+            message: "Internal server error while deleting room."
         });
     }
 }
