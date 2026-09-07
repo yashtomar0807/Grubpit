@@ -41,6 +41,16 @@ const roomSchema = new mongoose.Schema({
         type: [String],
         default: [],
     },
+    files: {
+        type: [{
+            id: String,
+            name: String,
+            type: { type: String, default: 'file' },
+            language: String,
+            content: String
+        }],
+        default: []
+    }
 },
     
 {timestamps: true,}

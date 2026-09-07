@@ -1,17 +1,17 @@
-import CreateRoomModal from '../components/createroommodal/CreateRoomModal';
-import JoinRoomModal from '../components/joinroommodal/JoinRoomModal';  
-import Navbar from '../components/navbar/Navbar';
-import Notifications from '../components/notifications/Notifications';
-import QuickActions from '../components/actions/QuickActions';
-import RoomHistory from '../components/history/RoomHistory';
-import WelcomeCard from '../components/welcome/WelcomeCard';
-import './Dashboard.css';
-import { useEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
+import VeewoNavbar from '../components/dashboard/VeewoNavbar';
+import VeewoHero from '../components/dashboard/VeewoHero';
+import QuickActions from '../components/actions/QuickActions';
+import RoomHistory from '../components/history/RoomHistory';
+import Notifications from '../components/notifications/Notifications';
+import CreateRoomModal from '../components/createroommodal/CreateRoomModal';
+import JoinRoomModal from '../components/joinroommodal/JoinRoomModal';
+import './Dashboard.css';
 
 function Dashboard() {
-  const [rooms, setRoom] = useState([]);
+  const [rooms, setRooms] = useState([]);
   const [isCreateRoomModalOpen, setIsCreateRoomModalOpen] = useState(false);
   const [isJoinRoomModalOpen, setIsJoinRoomModalOpen] = useState(false);
   const navigate = useNavigate();
@@ -20,7 +20,7 @@ function Dashboard() {
     try {
       const response = await axios.get('http://localhost:5000/api/room');
       const roomList = Array.isArray(response.data) ? response.data : (response.data.rooms || []);
-      setRoom(roomList);
+      setRooms(roomList);
     } catch (error) {
       console.error('Error fetching rooms:', error);
     }
@@ -59,7 +59,7 @@ function Dashboard() {
   async function handleDeleteRoom(roomCode) {
     try {
       await axios.delete(`http://localhost:5000/api/room/${roomCode}`);
-      setRoom((prevRooms) => prevRooms.filter((r) => (r.Roomcode || r.roomCode) !== roomCode));
+      setRooms((prevRooms) => prevRooms.filter((r) => (r.Roomcode || r.roomCode) !== roomCode));
     } catch (error) {
       console.error('Error deleting room:', error);
       alert(error.response?.data?.message || 'Failed to delete room');
@@ -67,23 +67,34 @@ function Dashboard() {
   }
 
   return (
-    <main className="dashboard-page">
-      <Navbar />
-      
+    <main className="dashboard-page veewo-style-page">
+      {/* Top Safari/Browser Floating Navigation Bar */}
+      <VeewoNavbar
+        onIntegrateClick={() => setIsCreateRoomModalOpen(true)}
+        onCreateRoomClick={() => setIsCreateRoomModalOpen(true)}
+        onJoinRoomClick={() => setIsJoinRoomModalOpen(true)}
+      />
+
+      {/* Main Hero Section directly matching the uploaded screenshot */}
+      <VeewoHero
+        onCreateRoomClick={() => setIsCreateRoomModalOpen(true)}
+        onJoinRoomClick={() => setIsJoinRoomModalOpen(true)}
+      />
+
+      {/* Workspace Quick Actions & Active Room History */}
       <div className="dashboard-container">
-        <WelcomeCard />
-        
         <QuickActions
           onCreateRoomClick={() => setIsCreateRoomModalOpen(true)}
           onJoinRoomClick={() => setIsJoinRoomModalOpen(true)}
         />
-        
+
         <div className="dashboard-content">
           <RoomHistory room={rooms} onDeleteRoom={handleDeleteRoom} />
           <Notifications />
         </div>
       </div>
 
+      {/* Modals */}
       {isCreateRoomModalOpen && (
         <CreateRoomModal
           isOpen={isCreateRoomModalOpen}

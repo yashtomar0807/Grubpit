@@ -122,3 +122,36 @@ export async function deleteRoom(req, res) {
         });
     }
 }
+
+export async function updateRoomFiles(req, res) {
+    try {
+        const { roomCode } = req.params;
+        const { files } = req.body;
+
+        const updatedRoom = await Room.findOneAndUpdate(
+            { Roomcode: roomCode },
+            { $set: { files } },
+            { new: true }
+        );
+
+        if (!updatedRoom) {
+            return res.status(404).json({
+                success: false,
+                message: "Room not found"
+            });
+        }
+
+        return res.status(200).json({
+            success: true,
+            message: "Room files saved successfully in MongoDB",
+            files: updatedRoom.files
+        });
+    } catch (error) {
+        console.error("Error updating room files:", error);
+        return res.status(500).json({
+            success: false,
+            message: "Internal server error updating room files"
+        });
+    }
+}
+

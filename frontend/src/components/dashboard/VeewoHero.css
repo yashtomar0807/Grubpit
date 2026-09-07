@@ -1,0 +1,396 @@
+.veewo-hero-container {
+  position: relative;
+  width: 100%;
+  min-height: calc(100vh - 110px);
+  background: #090c15;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  padding: 48px 40px 32px 40px;
+  overflow: hidden;
+  box-sizing: border-box;
+}
+
+/* Background Radial Spotlights */
+.hero-radial-spotlight {
+  position: absolute;
+  top: 30%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 900px;
+  height: 600px;
+  background: radial-gradient(
+    ellipse at center,
+    rgba(67, 56, 202, 0.35) 0%,
+    rgba(37, 99, 235, 0.2) 35%,
+    rgba(15, 23, 42, 0) 70%
+  );
+  filter: blur(60px);
+  pointer-events: none;
+  z-index: 1;
+}
+
+.hero-cyan-glow-flare {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 450px;
+  height: 450px;
+  background: radial-gradient(
+    circle,
+    rgba(6, 182, 212, 0.25) 0%,
+    rgba(16, 185, 129, 0.1) 45%,
+    transparent 70%
+  );
+  filter: blur(50px);
+  pointer-events: none;
+  z-index: 1;
+}
+
+/* Header Content / Headline */
+.hero-header-content {
+  position: relative;
+  z-index: 2;
+  text-align: center;
+  max-width: 960px;
+  margin-bottom: 20px;
+}
+
+.hero-headline {
+  font-family: var(--font-heading);
+  font-size: 46px;
+  font-weight: 600;
+  line-height: 1.22;
+  letter-spacing: -1.2px;
+  color: #f1f5f9;
+  text-shadow: 0 4px 20px rgba(0, 0, 0, 0.6);
+}
+
+/* Main 3-Column Layout: Left Card, Center Emblem, Right Cards */
+.hero-visual-grid {
+  position: relative;
+  z-index: 2;
+  width: 100%;
+  max-width: 1280px;
+  display: grid;
+  grid-template-columns: 340px 1fr 280px;
+  gap: 32px;
+  align-items: center;
+  margin-top: 10px;
+  margin-bottom: 30px;
+}
+
+/* Left Side Card */
+.hero-left-card {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 20px;
+  max-width: 320px;
+}
+
+.indicator-tabs {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.indicator-bar {
+  height: 3px;
+  width: 36px;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.18);
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.indicator-bar.active {
+  background: #10b981;
+  box-shadow: 0 0 10px rgba(16, 185, 129, 0.6);
+  width: 48px;
+}
+
+.hero-description-text {
+  font-size: 14px;
+  line-height: 1.6;
+  color: #94a3b8;
+  font-weight: 400;
+}
+
+.guide-pill-btn {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(12px);
+  padding: 10px 12px 10px 20px;
+  border-radius: 9999px;
+  width: 220px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.guide-pill-btn:hover {
+  background: rgba(255, 255, 255, 0.09);
+  border-color: rgba(255, 255, 255, 0.2);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+}
+
+.guide-pill-text {
+  display: flex;
+  flex-direction: column;
+  text-align: left;
+}
+
+.pill-title {
+  font-size: 13px;
+  font-weight: 600;
+  color: #ffffff;
+}
+
+.pill-subtitle {
+  font-size: 11px;
+  color: #64748b;
+}
+
+.guide-circle-play {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #10b981 0%, #06b6d4 100%);
+  color: #0f172a;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 0 14px rgba(16, 185, 129, 0.5);
+  transition: transform 0.3s ease;
+}
+
+.guide-pill-btn:hover .guide-circle-play {
+  transform: scale(1.08);
+}
+
+/* Center Emblem Wrapper */
+.hero-center-emblem-wrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 380px;
+}
+
+.emblem-core-light {
+  position: absolute;
+  width: 120px;
+  height: 120px;
+  background: #ffffff;
+  border-radius: 50%;
+  box-shadow: 
+    0 0 50px 20px #ffffff,
+    0 0 100px 40px #38bdf8,
+    0 0 140px 60px #818cf8;
+  opacity: 0.95;
+  z-index: 1;
+  animation: pulseLight 4s ease-in-out infinite alternate;
+}
+
+@keyframes pulseLight {
+  0% { transform: scale(0.92); opacity: 0.85; }
+  100% { transform: scale(1.08); opacity: 1; }
+}
+
+.veewo-emblem-shape {
+  position: relative;
+  z-index: 2;
+  width: 320px;
+  height: 320px;
+  filter: drop-shadow(0 20px 40px rgba(0, 0, 0, 0.8));
+  transition: transform 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.veewo-emblem-shape:hover {
+  transform: scale(1.04) rotate(2deg);
+}
+
+.emblem-svg {
+  width: 100%;
+  height: 100%;
+}
+
+/* Right Stacked Glass Metric Cards */
+.hero-right-cards {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  width: 100%;
+}
+
+.metric-card {
+  background: rgba(255, 255, 255, 0.035);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  backdrop-filter: blur(16px);
+  border-radius: 18px;
+  padding: 24px 24px 20px 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.3);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  cursor: pointer;
+}
+
+.metric-card:hover {
+  background: rgba(255, 255, 255, 0.06);
+  border-color: rgba(255, 255, 255, 0.18);
+  transform: translateY(-4px);
+  box-shadow: 0 18px 40px rgba(0, 0, 0, 0.4);
+}
+
+.metric-card-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.metric-value {
+  font-family: var(--font-heading);
+  font-size: 42px;
+  font-weight: 700;
+  color: #ffffff;
+  letter-spacing: -1px;
+}
+
+.metric-arrow-btn {
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  color: #cbd5e1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.metric-card:hover .metric-arrow-btn {
+  background: #ffffff;
+  color: #0f172a;
+  border-color: #ffffff;
+  transform: translate(2px, -2px);
+}
+
+.metric-label {
+  font-size: 14px;
+  color: #94a3b8;
+  font-weight: 500;
+}
+
+/* Bottom Integration Partners Strip */
+.hero-partners-strip {
+  position: relative;
+  z-index: 2;
+  width: 100%;
+  max-width: 1100px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-top: 32px;
+  border-top: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.partner-logo {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  color: #64748b;
+  font-size: 18px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  opacity: 0.75;
+}
+
+.partner-logo:hover {
+  color: #f1f5f9;
+  opacity: 1;
+  transform: translateY(-2px);
+}
+
+.partner-icon {
+  color: currentColor;
+}
+
+.partner-name {
+  font-family: var(--font-sans);
+  letter-spacing: -0.3px;
+}
+
+.asana-dots {
+  display: flex;
+  gap: 3px;
+}
+
+.a-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: currentColor;
+}
+
+.upwork-text {
+  font-family: serif;
+  font-weight: 700;
+  font-size: 20px;
+}
+
+/* Responsive Styles */
+@media (max-width: 1120px) {
+  .hero-headline {
+    font-size: 36px;
+  }
+  .hero-visual-grid {
+    grid-template-columns: 1fr;
+    gap: 40px;
+    justify-items: center;
+  }
+  .hero-left-card {
+    align-items: center;
+    text-align: center;
+    max-width: 500px;
+  }
+  .hero-right-cards {
+    flex-direction: row;
+    max-width: 600px;
+  }
+  .metric-card {
+    flex: 1;
+  }
+  .hero-partners-strip {
+    flex-wrap: wrap;
+    gap: 24px;
+    justify-content: center;
+  }
+}
+
+@media (max-width: 640px) {
+  .veewo-hero-container {
+    padding: 24px 16px;
+  }
+  .hero-headline {
+    font-size: 26px;
+  }
+  .veewo-emblem-shape {
+    width: 240px;
+    height: 240px;
+  }
+  .hero-right-cards {
+    flex-direction: column;
+  }
+}

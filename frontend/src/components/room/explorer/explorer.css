@@ -1,0 +1,216 @@
+.file-explorer-container {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  background: transparent;
+  color: #f1f5f9;
+  font-family: var(--font-sans);
+}
+
+.explorer-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 16px 18px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  background: rgba(255, 255, 255, 0.02);
+}
+
+.explorer-title {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.explorer-title span {
+  font-size: 20px;
+}
+
+.explorer-title h3 {
+  font-size: 15px;
+  font-weight: 700;
+  color: #f1f5f9;
+  letter-spacing: -0.3px;
+}
+
+.explorer-header-actions {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.upload-file-btn {
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  color: #f1f5f9;
+  font-size: 11px;
+  font-weight: 600;
+  padding: 6px 10px;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.upload-file-btn:hover {
+  background: rgba(255, 255, 255, 0.12);
+  border-color: rgba(255, 255, 255, 0.25);
+  transform: translateY(-1px);
+}
+
+.new-file-btn {
+  background: linear-gradient(135deg, #10b981 0%, #06b6d4 100%);
+  border: none;
+  color: #0f172a;
+  font-size: 11px;
+  font-weight: 700;
+  padding: 6px 12px;
+  border-radius: 8px;
+  cursor: pointer;
+  box-shadow: 0 4px 12px rgba(16, 185, 129, 0.3);
+  transition: all 0.2s ease;
+}
+
+.new-file-btn:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 6px 16px rgba(16, 185, 129, 0.5);
+}
+
+.new-file-form {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 12px 16px;
+  background: rgba(255, 255, 255, 0.04);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.new-file-form input {
+  flex: 1;
+  background: rgba(0, 0, 0, 0.3);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: 6px;
+  padding: 6px 10px;
+  color: #f1f5f9;
+  font-size: 12px;
+  outline: none;
+}
+
+.new-file-form input:focus {
+  border-color: #06b6d4;
+  box-shadow: 0 0 8px rgba(6, 182, 212, 0.3);
+}
+
+.new-file-form button[type="submit"] {
+  background: #10b981;
+  border: none;
+  color: #0f172a;
+  font-weight: 700;
+  font-size: 11px;
+  padding: 6px 10px;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+.new-file-form button[type="button"] {
+  background: transparent;
+  border: none;
+  color: #94a3b8;
+  font-size: 14px;
+  cursor: pointer;
+}
+
+.file-tree-list {
+  flex: 1;
+  overflow-y: auto;
+  padding: 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.file-tree-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px 14px;
+  border-radius: 10px;
+  background: rgba(255, 255, 255, 0.02);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.file-tree-item:hover {
+  background: rgba(255, 255, 255, 0.06);
+  border-color: rgba(255, 255, 255, 0.12);
+}
+
+.file-tree-item.active {
+  background: rgba(6, 182, 212, 0.12);
+  border-color: rgba(6, 182, 212, 0.35);
+  box-shadow: 0 4px 14px rgba(6, 182, 212, 0.15);
+}
+
+.file-left {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  min-width: 0;
+}
+
+.file-icon-badge {
+  font-size: 10px;
+  font-weight: 800;
+  padding: 3px 6px;
+  border-radius: 6px;
+  letter-spacing: 0.03em;
+}
+
+.file-icon-badge.cpp { background: rgba(59, 130, 246, 0.2); color: #60a5fa; }
+.file-icon-badge.js { background: rgba(245, 158, 11, 0.2); color: #fbbf24; }
+.file-icon-badge.py { background: rgba(16, 185, 129, 0.2); color: #34d399; }
+.file-icon-badge.html { background: rgba(244, 63, 94, 0.2); color: #f87171; }
+.file-icon-badge.css { background: rgba(168, 85, 247, 0.2); color: #c084fc; }
+.file-icon-badge.json { background: rgba(148, 163, 184, 0.2); color: #cbd5e1; }
+.file-icon-badge.general { background: rgba(255, 255, 255, 0.1); color: #94a3b8; }
+
+.file-name-text {
+  font-size: 13px;
+  font-weight: 600;
+  color: #f1f5f9;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.file-tree-item.active .file-name-text {
+  color: #38bdf8;
+}
+
+.delete-file-btn {
+  background: transparent;
+  border: none;
+  opacity: 0;
+  cursor: pointer;
+  font-size: 12px;
+  padding: 4px;
+  transition: opacity 0.2s ease;
+}
+
+.file-tree-item:hover .delete-file-btn {
+  opacity: 0.7;
+}
+
+.delete-file-btn:hover {
+  opacity: 1 !important;
+}
+
+.explorer-footer-info {
+  padding: 12px 18px;
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+  font-size: 11px;
+  color: #64748b;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}

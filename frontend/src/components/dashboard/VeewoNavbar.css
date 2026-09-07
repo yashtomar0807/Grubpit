@@ -1,0 +1,217 @@
+.browser-header-wrapper {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  background: #090c14;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+/* Browser top chrome window controls */
+.browser-top-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px 18px;
+  background: #0c0f18;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+  font-size: 13px;
+  color: #7b8398;
+}
+
+.window-dots {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.dot {
+  width: 11px;
+  height: 11px;
+  border-radius: 50%;
+}
+
+.dot-close { background: #ed6a5e; }
+.dot-minimize { background: #f4bf4f; }
+.dot-expand { background: #61c554; }
+
+.window-nav-arrows {
+  display: flex;
+  gap: 12px;
+  color: #535b70;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.browser-url-bar {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: rgba(255, 255, 255, 0.06);
+  padding: 5px 16px;
+  border-radius: 8px;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  width: 380px;
+  justify-content: center;
+  color: #a0a7bc;
+  font-size: 12px;
+  font-family: var(--font-sans);
+}
+
+.url-shield-icon, .url-refresh-icon {
+  opacity: 0.6;
+}
+
+.url-text {
+  letter-spacing: 0.3px;
+  color: #c5cbe0;
+}
+
+.window-actions {
+  display: flex;
+  gap: 14px;
+  color: #636b83;
+}
+
+.window-icon {
+  cursor: pointer;
+  transition: color 0.2s;
+}
+
+.window-icon:hover {
+  color: #cbd5e1;
+}
+
+/* Floating Veewo Navbar */
+.veewo-navbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 16px 36px;
+  background: rgba(13, 16, 26, 0.85);
+  backdrop-filter: blur(16px);
+  position: relative;
+  z-index: 10;
+}
+
+.veewo-logo {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  cursor: pointer;
+}
+
+.logo-icon-nodes {
+  width: 32px;
+  height: 32px;
+  position: relative;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 3px;
+  align-content: center;
+  justify-content: center;
+}
+
+.node {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #10b981 0%, #06b6d4 100%);
+  box-shadow: 0 0 10px rgba(6, 182, 212, 0.6);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.veewo-logo:hover .node {
+  transform: scale(1.15);
+  box-shadow: 0 0 14px rgba(16, 185, 129, 0.9);
+}
+
+.logo-title {
+  font-size: 20px;
+  font-weight: 700;
+  color: #ffffff;
+  font-family: var(--font-heading);
+  letter-spacing: -0.4px;
+}
+
+.veewo-nav-menu {
+  display: flex;
+  align-items: center;
+  gap: 28px;
+  list-style: none;
+}
+
+.nav-link {
+  color: #94a3b8;
+  text-decoration: none;
+  font-size: 14px;
+  font-weight: 500;
+  transition: color 0.2s ease;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.nav-link:hover {
+  color: #ffffff;
+}
+
+.career-count {
+  color: #64748b;
+  font-size: 13px;
+}
+
+.veewo-nav-actions {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.integrate-btn {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  background: #ffffff;
+  color: #0f172a;
+  border: none;
+  padding: 6px 6px 6px 20px;
+  border-radius: 9999px;
+  font-weight: 600;
+  font-size: 14px;
+  cursor: pointer;
+  box-shadow: 0 4px 20px rgba(255, 255, 255, 0.15);
+  transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.integrate-btn:hover {
+  transform: translateY(-1px) scale(1.02);
+  box-shadow: 0 6px 24px rgba(255, 255, 255, 0.25);
+  background: #f8fafc;
+}
+
+.btn-arrow-circle {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  background: #0f172a;
+  color: #ffffff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform 0.25s ease;
+}
+
+.integrate-btn:hover .btn-arrow-circle {
+  transform: translateX(2px);
+}
+
+@media (max-width: 900px) {
+  .veewo-nav-menu {
+    display: none;
+  }
+  .browser-url-bar {
+    width: 200px;
+  }
+  .veewo-navbar {
+    padding: 14px 20px;
+  }
+}
