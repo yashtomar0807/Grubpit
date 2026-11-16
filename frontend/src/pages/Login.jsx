@@ -61,7 +61,7 @@ function Login() {
       <div className="auth-card">
         {/* Brand Header */}
         <div className="auth-brand">
-          <span className="brand-logo-icon">⚡</span>
+       
           <h1 className="brand-name">GRUBPIT</h1>
         </div>
 

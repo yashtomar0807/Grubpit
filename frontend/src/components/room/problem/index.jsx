@@ -76,7 +76,7 @@ function ProblemPane({ onSelectProblem }) {
   useEffect(() => {
     async function fetchProblems() {
       try {
-        const response = await axios.get('http://localhost:5000/api/problems');
+        const response = await axios.get(`${import.meta.env.VITE_API_URL}/api/problems`);
         if (response.data.success && Array.isArray(response.data.problems) && response.data.problems.length > 0) {
           setProblems(response.data.problems);
           if (onSelectProblem) {

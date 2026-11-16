@@ -55,7 +55,7 @@ function RoomPage() {
 
   async function fetchRoom() {
     try {
-      const response = await axios.get(`http://localhost:5000/api/room/${roomCode}`);
+      const response = await axios.get(`${import.meta.env.VITE_API_URL}/room/${roomCode}`);
       const r = response.data.room;
       setRoom(r);
 

@@ -7,5 +7,6 @@
     "express": "^5.2.1",
     "mongoose": "^9.7.4",
     "socket.io": "^4.8.3"
-  }
+  },
+  "scripts":{"start": "node server.js"}
 }

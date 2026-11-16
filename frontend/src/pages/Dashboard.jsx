@@ -58,7 +58,7 @@ function Dashboard() {
 
   async function handleDeleteRoom(roomCode) {
     try {
-      await axios.delete(`http://localhost:5000/api/room/${roomCode}`);
+      await axios.delete(`${import.meta.env.VITE_API_URL}/api/room/${roomCode}`);
       setRooms((prevRooms) => prevRooms.filter((r) => (r.Roomcode || r.roomCode) !== roomCode));
     } catch (error) {
       console.error('Error deleting room:', error);

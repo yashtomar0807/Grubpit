@@ -27,7 +27,7 @@ function JoinRoomModal({ isOpen, onClose, onJoin }) {
       if (onJoin) {
         await onJoin(roomData);
       } else {
-        const response = await axios.post('http://localhost:5000/api/room/join', roomData);
+        const response = await axios.post(`${import.meta.env.VITE_API_URL}/api/room/join`, roomData);
         if (response.status === 200) {
           onClose();
         }
