@@ -82,7 +82,7 @@ function RoomPage() {
   const saveFilesToMongoDB = async (filesToSave) => {
     if (!roomCode) return;
     try {
-      await axios.put(`http://localhost:5000/api/room/${roomCode}/files`, { files: filesToSave });
+      await axios.put(`${import.meta.env.VITE_API_URL}/api/room/${roomCode}/files`, { files: filesToSave });
     } catch (err) {
       console.error("Error saving files to MongoDB:", err);
     }

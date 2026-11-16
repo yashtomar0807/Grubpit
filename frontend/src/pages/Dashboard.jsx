@@ -18,7 +18,7 @@ function Dashboard() {
 
   async function fetchRooms() {
     try {
-      const response = await axios.get('http://localhost:5000/api/room');
+      const response = await axios.get(`${import.meta.env.VITE_API_URL}/api/room`);
       const roomList = Array.isArray(response.data) ? response.data : (response.data.rooms || []);
       setRooms(roomList);
     } catch (error) {
@@ -36,7 +36,7 @@ function Dashboard() {
         ...RoomData,
         maxParticipants: Number(RoomData.maxParticipants)
       };
-      const response = await axios.post('http://localhost:5000/api/room', payload);
+      const response = await axios.post(`${import.meta.env.VITE_API_URL}/api/room`, payload);
       await fetchRooms();
       navigate(`/room/${response.data.newRoom.roomCode}`);
     } catch (error) {
@@ -47,7 +47,7 @@ function Dashboard() {
 
   async function handleJoinRoom(RoomData) {
     try {
-      const response = await axios.post('http://localhost:5000/api/room/join', RoomData);
+      const response = await axios.post(`${import.meta.env.VITE_API_URL}/api/room/join`, RoomData);
       setIsJoinRoomModalOpen(false);
       navigate(`/room/${response.data.room.roomCode}`);
     } catch (err) {
